@@ -18,6 +18,7 @@ import org.hibernate.Transaction;
 
 import sun.net.www.content.text.plain;
 import ee.playtech.trial.HibernateUtil;
+import ee.playtech.trial.server.model.entity.BalanceChangeInfo;
 import ee.playtech.trial.server.model.entity.Player;
 
 import org.springframework.stereotype.Service;
@@ -25,33 +26,38 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerEntitiesManager {
 
-	public BigDecimal changeUserBalance(BigDecimal balanceChange,
+	public BalanceChangeInfo changeUserBalance(BigDecimal balanceChange,
 			String userName) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Transaction transaction = null;
-		BigDecimal newBalanceAmount = null;
+		BalanceChangeInfo info = new BalanceChangeInfo();
 		try {
 			transaction = session.beginTransaction();
 			Player player = (Player) session.get(Player.class, userName,
 					LockMode.UPGRADE);
+			BigDecimal newBalanceAmount;
 			if (player == null) {
 				player = new Player();
 				player.setUserName(userName);
-				player.setBalance(balanceChange);
+				newBalanceAmount = balanceChange;
 			} else {
 				newBalanceAmount = player.getBalance().add(balanceChange);
 				player.setBalance(newBalanceAmount);
 			}
+			player.setBalance(newBalanceAmount);
 			session.save(player);
 			transaction.commit();
+			info.setVersion(player.getVersion());
+			info.setCurrentBalance(newBalanceAmount);
+			info.setBalanceChange(balanceChange);
 		} catch (HibernateException e) {
 			transaction.rollback();
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return newBalanceAmount;
+		return info;
 
 	}
 
