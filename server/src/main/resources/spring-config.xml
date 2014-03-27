@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd ">
 	<!-- <context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.database"/> 
 		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.client"/> 
@@ -8,11 +8,8 @@
 		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.crawler"/> 
 		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.webservice"/> 
 		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.webservice.util"/> -->
-	<!--  <context:component-scan base-package="ee.playtech.trial.serwer.ws.rest" />-->
-	<bean name="test" class="ee.playtech.trial.server.ws.rest.MovieController">
-	
-	</bean>
-	<bean name="commentWebservice" class="ee.playtech.trial.server.ws.rest.CommentWebservice">
-	
-	</bean>
+	<!-- <context:component-scan base-package="ee.playtech.trial.serwer.ws.rest" 
+		/> -->
+	<bean name="userBalanceWebservice"
+		class="ee.playtech.trial.server.ws.rest.UserBalanceWebservice" />
 </beans>

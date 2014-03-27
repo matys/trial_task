@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sun.jersey.spi.container.servlet.ServletContainer;
 
-import ee.playtech.trial.server.ws.rest.CommentWebservice;
+import ee.playtech.trial.server.ws.rest.UserBalanceWebservice;
 
 /**
  * Hello world!
