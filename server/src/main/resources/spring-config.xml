@@ -10,14 +10,9 @@
 	<bean id="userBalanceWebservice" class="ee.playtech.trial.server.ws.rest.UserBalanceWebservice" />
 	<bean id="handlerMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="interceptors">
-			<list>
-				<ref bean="timeExecutionMonitor" />
-			</list>
-		</property>
 		<property name="mappings">
 			<value>
-				*=userBalanceWebservice
+				/*=timeExecutionMonitor
 			</value>
 		</property>
 	</bean>
