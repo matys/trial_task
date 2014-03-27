@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created with IntelliJ IDEA. User: Mateusz Date: 15.04.13 Time: 20:27
  */
-@Path("/balance")
+@Path("/")
 @Service
 public class CommentWebservice {
 
@@ -31,12 +31,12 @@ public class CommentWebservice {
 	 * @return returns all comments for Place with id equal to poiId
 	 */
 	@POST
-	@Path("/{userName}/")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Employee getEmployee(@PathParam("userName") String userName, BalanceChange balanceChange) {
+	@Path("/{userName}/balance/")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Employee getEmployee(@PathParam("userName") String userName, String jsonRequest) {
 		System.out.println(userName);
-		System.out.println(balanceChange.getAmount());
+		System.out.println(jsonRequest);
 		Employee employee = new Employee();
 		employee.setName("John");
 		employee.setAge(25);
