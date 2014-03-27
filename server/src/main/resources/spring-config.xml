@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd ">
-	<!-- <context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.database"/> 
-		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.client"/> 
-		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.test"/> 
-		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.crawler"/> 
-		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.webservice"/> 
-		<context:component-scan base-package="pt.ul.fc.di.aw.poiwebservice.webservice.util"/> -->
-	<!-- <context:component-scan base-package="ee.playtech.trial.serwer.ws.rest" 
-		/> -->
-	<bean name="userBalanceWebservice"
-		class="ee.playtech.trial.server.ws.rest.UserBalanceWebservice" />
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<bean id="userBalanceWebservice" class="ee.playtech.trial.server.ws.rest.UserBalanceWebservice" />
+	<bean id="playerEntitiesManager" class="ee.playtech.trial.server.database.PlayerEntitiesManager" />
+	<task:annotation-driven /> 
+	<bean id="statisticsScheduler" class="ee.playtech.trial.server.scheduler.StatisticsScheduler" />
 </beans>

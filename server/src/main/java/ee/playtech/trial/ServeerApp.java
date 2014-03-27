@@ -29,7 +29,6 @@ public class ServeerApp {
 		// spring initialize classes
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"spring-config.xml");
-
 		// System.out
 		// .println("Select mode of backend: \n0 - run database from scratch (drop-create database) \n1 - "
 		// + "continue "
@@ -47,6 +46,9 @@ public class ServeerApp {
 
 		// start gathering data
 		BeanFactory factory = context;
+		if(factory.getBean("playerEntitiesManager") == null){
+			System.out.println("NPE!!!!!!!!!!");
+		}
 		// if (mode == 0) {
 		// DataInitializer dataInitializer = (DataInitializer) factory
 		// .getBean("dataInitializer");
