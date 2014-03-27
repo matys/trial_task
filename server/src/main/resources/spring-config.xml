@@ -8,16 +8,21 @@
 
 	<context:component-scan base-package="ee.playtech.trial.server.ws.rest" />
 	<bean id="userBalanceWebservice" class="ee.playtech.trial.server.ws.rest.UserBalanceWebservice" />
-	<bean id="handlerMapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<value>
-				/*=timeExecutionMonitor
-			</value>
-		</property>
-	</bean>
+	<bean id="webserviceMonitoringInterceptor"
+		class="ee.playtech.trial.server.ws.rest.monitoring.WebserviceMonitoringInterceptor" />
 	<bean id="playerEntitiesManager" class="ee.playtech.trial.server.database.PlayerEntitiesManager" />
 	<task:annotation-driven />
 	<bean id="statisticsScheduler" class="ee.playtech.trial.server.scheduler.StatisticsScheduler" />
-	<bean id="timeExecutionMonitor" class="ee.playtech.trial.server.ws.rest.monitoring.AuthFilter" />
+	
+	<bean id="userBalanceWebserviceProxy" 
+                 class="org.springframework.aop.framework.ProxyFactoryBean">
+ 
+		<property name="target" ref="userBalanceWebservice" />
+ 
+		<property name="interceptorNames">
+			<list>
+				<value>webserviceMonitoringInterceptor</value>
+			</list>
+		</property>
+	</bean>
 </beans>
