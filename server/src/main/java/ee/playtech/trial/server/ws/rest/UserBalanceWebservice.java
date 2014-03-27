@@ -6,7 +6,6 @@
  */
 package ee.playtech.trial.server.ws.rest;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -15,11 +14,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ee.playtech.trial.server.database.PlayerEntitiesManager;
 import ee.playtech.trial.server.model.entity.BalanceChangeInfo;
@@ -27,14 +24,13 @@ import ee.playtech.trial.server.model.entity.Player;
 import ee.playtech.trial.server.ws.rest.request.AddBalanceChangeRequest;
 import ee.playtech.trial.server.ws.rest.response.AddBalanceChangeResponse;
 
-/**
- * Created with IntelliJ IDEA. User: Mateusz Date: 15.04.13 Time: 20:27
- */
 @Path("/")
+@Component
 public class UserBalanceWebservice {
 
-	private PlayerEntitiesManager playerEntitiesManager = new PlayerEntitiesManager();
-
+	@Autowired
+	private PlayerEntitiesManager playerEntitiesManager;
+//add logging the easiest possible way using logger
 	/**
 	 * Adds balance change to current balance for given user in uri.
 	 * 

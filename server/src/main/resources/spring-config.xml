@@ -6,8 +6,23 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 
+	<context:component-scan base-package="ee.playtech.trial.server.ws.rest" />
 	<bean id="userBalanceWebservice" class="ee.playtech.trial.server.ws.rest.UserBalanceWebservice" />
+	<bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="timeExecutionMonitor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<value>
+				*=userBalanceWebservice
+			</value>
+		</property>
+	</bean>
 	<bean id="playerEntitiesManager" class="ee.playtech.trial.server.database.PlayerEntitiesManager" />
-	<task:annotation-driven /> 
+	<task:annotation-driven />
 	<bean id="statisticsScheduler" class="ee.playtech.trial.server.scheduler.StatisticsScheduler" />
+	<bean id="timeExecutionMonitor" class="ee.playtech.trial.server.ws.rest.monitoring.AuthFilter" />
 </beans>
