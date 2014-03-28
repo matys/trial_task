@@ -7,6 +7,7 @@
 package ee.playtech.trial.server.ws.rest;
 
 import java.util.List;
+import com.wordnik.swagger.annotations.*;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -24,7 +25,9 @@ import ee.playtech.trial.server.model.entity.Player;
 import ee.playtech.trial.server.ws.rest.request.AddBalanceChangeRequest;
 import ee.playtech.trial.server.ws.rest.response.AddBalanceChangeResponse;
 
+//TODO rename to UserBalanceResource 
 @Path("/")
+@Api(value = "/", description = "Operations on user balance")
 @Component
 public class UserBalanceWebservice {
 
@@ -51,6 +54,11 @@ public class UserBalanceWebservice {
 	@Consumes("application/json")
 	@Produces("application/json")
 	@Path("/{userName}/balanceChange/")
+	@ApiOperation(value = "add balance to user", notes = "More notes about this method", response = AddBalanceChangeResponse.class)
+	@ApiResponses(value = {
+	  @ApiResponse(code = 400, message = "TODO"),
+	  @ApiResponse(code = 404, message = "TODO") 
+	})
 	public AddBalanceChangeResponse addBalanceChange(
 			@PathParam("userName") String userName,
 			AddBalanceChangeRequest request) {

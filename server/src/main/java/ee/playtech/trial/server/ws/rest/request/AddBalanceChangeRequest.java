@@ -1,19 +1,22 @@
 package ee.playtech.trial.server.ws.rest.request;
 
 import java.io.Serializable;
+import com.wordnik.swagger.annotations.*;
 import java.math.BigDecimal;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+@ApiModel(value = "Data describing change of balance")
 @XmlRootElement
 public class AddBalanceChangeRequest implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private Long transactionId; 
+
+	@ApiModelProperty(value = "Transaction Id. Ensure that one transaction won't be processed more than one time", required = true)
+	private Long transactionId;
 	private BigDecimal amount;
 
 	public Long getTransactionId() {
