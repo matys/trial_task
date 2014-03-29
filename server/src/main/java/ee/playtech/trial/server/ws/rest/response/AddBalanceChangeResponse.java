@@ -5,6 +5,9 @@ import java.math.BigDecimal;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.wordnik.swagger.annotations.*;
+
+@ApiModel(value = "Data describing change of balance")
 @XmlRootElement
 public class AddBalanceChangeResponse implements Serializable {
 
@@ -13,6 +16,7 @@ public class AddBalanceChangeResponse implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(value = "Transaction Id. Ensure that one transaction won't be processed more than one time", required = true)
 	private Long transactionId;
 	private BigDecimal balanceChange;
 	private BigDecimal balanceAfterChange;
