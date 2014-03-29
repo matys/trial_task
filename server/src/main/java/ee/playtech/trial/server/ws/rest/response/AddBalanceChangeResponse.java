@@ -54,4 +54,12 @@ public class AddBalanceChangeResponse implements Serializable {
 		this.balanceVersion = balanceVersion;
 	}
 
+	@Override
+	public String toString() {
+		return "AddBalanceChangeResponse [transactionId=" + transactionId
+				+ ", balanceChange=" + balanceChange + ", balanceAfterChange="
+				+ balanceAfterChange + ", balanceVersion=" + balanceVersion
+				+ "]";
+	}
+
 }

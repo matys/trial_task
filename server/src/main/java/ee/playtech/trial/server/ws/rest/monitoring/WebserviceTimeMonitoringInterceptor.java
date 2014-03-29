@@ -8,7 +8,7 @@ import org.springframework.aop.MethodBeforeAdvice;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class WebserviceMonitoringInterceptor implements MethodBeforeAdvice, AfterReturningAdvice {
+public class WebserviceTimeMonitoringInterceptor implements MethodBeforeAdvice, AfterReturningAdvice {
 
 	public void before(Method method, Object[] args, Object target)
 			throws Throwable {

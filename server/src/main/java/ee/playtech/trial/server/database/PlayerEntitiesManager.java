@@ -8,20 +8,17 @@ package ee.playtech.trial.server.database;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import sun.net.www.content.text.plain;
-import ee.playtech.trial.HibernateUtil;
-import ee.playtech.trial.server.model.entity.BalanceChangeInfo;
-import ee.playtech.trial.server.model.entity.Player;
-
 import org.springframework.stereotype.Service;
+
+import ee.playtech.trial.HibernateUtil;
+import ee.playtech.trial.server.model.BalanceChangeInfo;
+import ee.playtech.trial.server.model.entity.Player;
 
 @Service
 public class PlayerEntitiesManager {

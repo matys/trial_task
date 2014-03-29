@@ -15,7 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sun.jersey.spi.container.servlet.ServletContainer;
 
-import ee.playtech.trial.server.ws.rest.UserBalanceWebservice;
+import ee.playtech.trial.server.ws.rest.UserWalletResource;
 
 
 /**

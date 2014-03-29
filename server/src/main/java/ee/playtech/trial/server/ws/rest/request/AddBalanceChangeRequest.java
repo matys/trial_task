@@ -35,4 +35,10 @@ public class AddBalanceChangeRequest implements Serializable {
 		this.amount = amount;
 	}
 
+	@Override
+	public String toString() {
+		return "AddBalanceChangeRequest [transactionId=" + transactionId
+				+ ", amount=" + amount + "]";
+	}
+	
 }
