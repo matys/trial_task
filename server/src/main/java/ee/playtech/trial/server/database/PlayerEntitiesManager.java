@@ -7,7 +7,6 @@
 package ee.playtech.trial.server.database;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -21,14 +20,14 @@ import ee.playtech.trial.server.model.BalanceChangeInfo;
 import ee.playtech.trial.server.model.entity.Player;
 
 @Service
-public class PlayerEntitiesManager {
+public class PlayerEntitiesManager extends EntitiesManager {
 
 	public BalanceChangeInfo changeUserBalance(BigDecimal balanceChange,
 			String userName) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Transaction transaction = null;
-		BalanceChangeInfo info = new BalanceChangeInfo();
+		BalanceChangeInfo info = null;
 		try {
 			transaction = session.beginTransaction();
 			Player player = (Player) session.get(Player.class, userName,
@@ -40,14 +39,12 @@ public class PlayerEntitiesManager {
 				newBalanceAmount = balanceChange;
 			} else {
 				newBalanceAmount = player.getBalance().add(balanceChange);
-				player.setBalance(newBalanceAmount);
 			}
 			player.setBalance(newBalanceAmount);
+			info = new BalanceChangeInfo(player.getVersion(), balanceChange, newBalanceAmount);
 			session.save(player);
 			transaction.commit();
-			info.setVersion(player.getVersion());
-			info.setCurrentBalance(newBalanceAmount);
-			info.setBalanceChange(balanceChange);
+			
 		} catch (HibernateException e) {
 			transaction.rollback();
 			e.printStackTrace();
@@ -59,21 +56,7 @@ public class PlayerEntitiesManager {
 	}
 
 	public List<Player> listPlayers() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = null;
-		List<Player> playerList = new ArrayList<Player>();
-		try {
-			transaction = session.beginTransaction();
-			playerList.addAll(session.createQuery("from Player")
-					.list());
-			transaction.commit();
-		} catch (HibernateException e) {
-			transaction.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return playerList;
+		return super.list(Player.class);
 	}
 
 }

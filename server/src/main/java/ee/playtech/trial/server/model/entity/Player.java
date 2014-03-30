@@ -41,4 +41,9 @@ public class Player extends GenericEntity {
 		this.balance = balance;
 	}
 
+	@Override
+	public String toString() {
+		return "Player [userName=" + userName + ", balance=" + balance + "]";
+	}
+
 }

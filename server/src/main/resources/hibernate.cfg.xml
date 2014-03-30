@@ -19,5 +19,6 @@
 		<!--create the database schema on startup if required -->
 		<property name="hbm2ddl.auto">update</property>
 		<mapping class="ee.playtech.trial.server.model.entity.Player"/>
+		<mapping class="ee.playtech.trial.server.model.entity.ProcessedQueriesStatistics"/>
 	</session-factory>
 </hibernate-configuration>
