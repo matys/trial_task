@@ -1,4 +1,5 @@
-package ee.playtech.trial.client.rest.balance;
+package ee.playtech.trial.client.util;
+
 
 public class IncrementalTransactionIdGenerator implements ITransactionIdGenerator {
 

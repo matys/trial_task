@@ -1,12 +1,5 @@
-/*
- * Any use, copying, modification, distribution and selling of this software
- * and its documentation for any purposes without SoftwareMind's written permission
- * is hereby prohibited
- *
- */
 package ee.playtech.trial.server.ws.rest.monitoring;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

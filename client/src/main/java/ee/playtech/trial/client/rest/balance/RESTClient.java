@@ -1,9 +1,3 @@
-/*
- * Any use, copying, modification, distribution and selling of this software
- * and its documentation for any purposes without SoftwareMind's written permission
- * is hereby prohibited
- *
- */
 package ee.playtech.trial.client.rest.balance;
 
 import java.io.BufferedReader;
@@ -19,11 +13,15 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ee.playtech.trial.client.rest.balance.request.InternalRequest;
+import ee.playtech.trial.common.configuration.ConfigurationProperty;
+
 public class RESTClient {
 
 	void executePostRequest(InternalRequest internalRequest) throws Exception {
 		DefaultHttpClient httpClient = new DefaultHttpClient();
-		HttpPost postRequest = new HttpPost("http://localhost:9999/"
+		HttpPost postRequest = new HttpPost(ConfigurationProperty.SERVER_HOST.getValue()
+				+ ":" + ConfigurationProperty.SERVER_PORT.getValue() + "/"
 				+ internalRequest.getUri());
 		buildHeaders(postRequest);
 		buildBody(internalRequest, postRequest);

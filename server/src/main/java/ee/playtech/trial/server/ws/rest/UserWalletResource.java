@@ -1,15 +1,6 @@
-/*
- * Any use, copying, modification, distribution and selling of this software
- * and its documentation for any purposes without SoftwareMind's written permission
- * is hereby prohibited
- *
- */
 package ee.playtech.trial.server.ws.rest;
 
-import java.io.IOException;
 import java.util.List;
-
-import com.wordnik.swagger.annotations.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
@@ -26,6 +17,11 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 
 import ee.playtech.trial.server.database.PlayerEntitiesManager;
 import ee.playtech.trial.server.model.BalanceChangeInfo;
@@ -83,7 +79,6 @@ public class UserWalletResource {
 				balanceChangeInfo = playerEntitiesManager.changeUserBalance(
 						request.getAmount(), userName);
 			} catch (HibernateException e) {
-
 				response.setStatus(HIBERNATE_ERROR_STATUS_CODE);
 			} // another exceptions will be mapped with 500 by default
 		}
@@ -113,11 +108,7 @@ public class UserWalletResource {
 	@Path("/users/")
 	@Produces("application/json")
 	public List<Player> getPlayers() {
-		List<Player> players = playerEntitiesManager.listPlayers();
-		for (Player p : players) {
-			System.out.println(p);
-		}
-		return players;
+		return playerEntitiesManager.listPlayers();
 	}
 
 	private AddBalanceChangeResponse createResponse(

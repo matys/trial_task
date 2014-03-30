@@ -1,10 +1,4 @@
-/*
- * Any use, copying, modification, distribution and selling of this software
- * and its documentation for any purposes without SoftwareMind's written permission
- * is hereby prohibited
- *
- */
-package ee.playtech.trial.client.rest.balance;
+package ee.playtech.trial.client.rest.balance.request;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -27,7 +21,7 @@ public class ChangeBalanceInternalRequest extends InternalRequest {
 
 	@Override
 	public String getUri() {
-		return userName + "/balanceChange/";
+		return userName + "/wallet/balanceChange/";
 	}
 
 	@Override

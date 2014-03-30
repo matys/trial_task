@@ -1,7 +1,5 @@
 package ee.playtech.trial.server.ws.rest.request.validator;
 
-import java.math.BigDecimal;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,3 @@
-/*
- * Any use, copying, modification, distribution and selling of this software
- * and its documentation for any purposes without SoftwareMind's written permission
- * is hereby prohibited
- *
- */
 package ee.playtech.trial.server.ws.rest;
 
 import java.util.List;

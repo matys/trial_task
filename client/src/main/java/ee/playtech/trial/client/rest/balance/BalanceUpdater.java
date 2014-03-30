@@ -1,11 +1,10 @@
 package ee.playtech.trial.client.rest.balance;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Random;
 
-import org.apache.http.client.ClientProtocolException;
-import org.json.JSONException;
+import ee.playtech.trial.client.util.IBalanceChangeStrategy;
+import ee.playtech.trial.client.util.ITransactionIdGenerator;
+import ee.playtech.trial.common.configuration.ConfigurationProperty;
 
 public class BalanceUpdater extends Thread {
 
@@ -27,22 +26,15 @@ public class BalanceUpdater extends Thread {
 			BigDecimal balanceChange = balanceChangeGenerator
 					.getNextBalanceChange();
 			try {
-				balanceClient.changeBalance("Test", balanceChange,
-						transactionIdGenerator.generateNext()); // Configuration
+				balanceClient.changeBalance(ConfigurationProperty.USER_NAME.getValue(), balanceChange,
+						transactionIdGenerator.generateNext()); 
 			} catch (Exception e) {
-				// add loging
 				System.out.println("Error happened while changing balance");
 				e.printStackTrace();
 			}
 			try {
-				Thread.currentThread().sleep(10000); // Conf (do konf mozna
-														// dodac typ obiektu
-														// zeby oknfiguracja
-														// mogla zwracac enumy
-														// np.). W razie zlego
-														// typu rzucac wyjatkiem
+				Thread.currentThread().sleep(Integer.parseInt(ConfigurationProperty.UPDATES_BREAK_LENGTH.getValue())); 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

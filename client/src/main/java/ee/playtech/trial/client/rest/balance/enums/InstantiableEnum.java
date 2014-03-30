@@ -1,4 +1,4 @@
-package ee.playtech.trial.client.rest.balance;
+package ee.playtech.trial.client.rest.balance.enums;
 
 public interface InstantiableEnum <T> {
 
