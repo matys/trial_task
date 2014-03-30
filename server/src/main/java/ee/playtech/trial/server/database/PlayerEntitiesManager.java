@@ -48,6 +48,7 @@ public class PlayerEntitiesManager extends EntitiesManager {
 		} catch (HibernateException e) {
 			transaction.rollback();
 			e.printStackTrace();
+			throw e;
 		} finally {
 			session.close();
 		}
