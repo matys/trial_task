@@ -15,8 +15,9 @@ public class AddBalanceChangeRequest implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "Transaction Id. Ensure that one transaction won't be processed more than one time", required = true)
+	@ApiModelProperty(value = "Id of transaction", required = true)
 	private Long transactionId;
+	@ApiModelProperty(value = "Amount by which wallet is to be changed", required = true)
 	private BigDecimal amount;
 
 	public Long getTransactionId() {
@@ -40,5 +41,5 @@ public class AddBalanceChangeRequest implements Serializable {
 		return "AddBalanceChangeRequest [transactionId=" + transactionId
 				+ ", amount=" + amount + "]";
 	}
-	
+
 }

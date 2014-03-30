@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.wordnik.swagger.annotations.*;
 
-@ApiModel(value = "Data describing change of balance")
+@ApiModel(value = "Data describing result of changing balance")
 @XmlRootElement
 public class AddBalanceChangeResponse implements Serializable {
 
@@ -15,12 +15,19 @@ public class AddBalanceChangeResponse implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@ApiModelProperty(value = "Transaction Id. Ensure that one transaction won't be processed more than one time", required = true)
-	private Long transactionId;
+	
+	@ApiModelProperty(value = "Value of wallet change", required = true)
 	private BigDecimal balanceChange;
+	
+	@ApiModelProperty(value = "User wallet value after change", required = true)
 	private BigDecimal balanceAfterChange;
+
+	@ApiModelProperty(value = "Version of wallet, incremented after every"
+			+ " change", required = true)
 	private Long balanceVersion;
+
+	@ApiModelProperty(value = "Id of transaction", required = true)
+	private Long transactionId;
 
 	public Long getTransactionId() {
 		return transactionId;

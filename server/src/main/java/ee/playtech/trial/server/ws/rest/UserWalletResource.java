@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
 
@@ -63,23 +64,23 @@ public class UserWalletResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	@Path("/{userName}/wallet/balanceChange/")
-	@ApiOperation(value = "add balance to user", notes = "More notes about this method", response = AddBalanceChangeResponse.class)
+	@ApiOperation(value = "add balance change to user's wallet", notes = "Method change current wallet of user by value provided by client", response = AddBalanceChangeResponse.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 430, message = "Database error"),
 			@ApiResponse(code = AddBalanceChangeRequestValidator.NO_USER_NAME_ERROR_CODE, message = AddBalanceChangeRequestValidator.NO_USER_NAME_ERROR_DESCRIPTION),
 			@ApiResponse(code = AddBalanceChangeRequestValidator.NO_AMOUNT_ERROR_CODE, message = AddBalanceChangeRequestValidator.NO_AMOUNT_ERROR_DESCRIPTION),
 			@ApiResponse(code = AddBalanceChangeRequestValidator.NO_TRANSACTION_ID_ERROR_CODE, message = AddBalanceChangeRequestValidator.NO_TRANSACTION_ID_ERROR_DESCRIPTION) })
-	public Response addBalanceChange(@PathParam("userName") String userName,
-			AddBalanceChangeRequest request,
-			@Context final HttpServletResponse response) {
-		int errorCode = validate(userName, request, response);
+	public Response addBalanceChange(
+			@ApiParam(value = "Name of player whose wallet is to be changed") @PathParam("userName") String userName,
+			AddBalanceChangeRequest request) {
+		int errorCode = validate(userName, request);
 		BalanceChangeInfo balanceChangeInfo = null;
 		if (errorCode == AddBalanceChangeRequestValidator.OK_STATUS_CODE) {
 			try {
 				balanceChangeInfo = playerEntitiesManager.changeUserBalance(
 						request.getAmount(), userName);
 			} catch (HibernateException e) {
-				response.setStatus(HIBERNATE_ERROR_STATUS_CODE);
+				errorCode = HIBERNATE_ERROR_STATUS_CODE;
 			} // another exceptions will be mapped with 500 by default
 		}
 		return Response.status(errorCode)
@@ -87,14 +88,8 @@ public class UserWalletResource {
 				.type(MediaType.APPLICATION_JSON).build();
 	}
 
-	private int validate(String userName, AddBalanceChangeRequest request,
-			final HttpServletResponse response) {
-		int errorCode = addBalanceChangeRequestValidator.validate(request,
-				userName);
-		if (errorCode != 0) {
-			response.setStatus(errorCode);
-		}
-		return errorCode;
+	private int validate(String userName, AddBalanceChangeRequest request) {
+		return addBalanceChangeRequestValidator.validate(request, userName);
 	}
 
 	/**
@@ -107,6 +102,7 @@ public class UserWalletResource {
 	@GET
 	@Path("/users/")
 	@Produces("application/json")
+	@ApiOperation(value = "returns list of all players with current wallet of each", response = Player.class)
 	public List<Player> getPlayers() {
 		return playerEntitiesManager.listPlayers();
 	}

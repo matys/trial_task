@@ -16,6 +16,6 @@ public class RandomBalanceChangeStrategy implements IBalanceChangeStrategy {
 
 	public BigDecimal getNextBalanceChange() {
 		double balanceChange = random.nextInt() % (MAX_BALANCE_CHANGE * DECIMAL_FRACTION);
-		return new BigDecimal(Math.round(balanceChange / DECIMAL_FRACTION)).setScale(BALANCE_DECIMAL_PLACES_QUANTITY, BigDecimal.ROUND_HALF_UP);
+		return new BigDecimal(balanceChange / DECIMAL_FRACTION).setScale(BALANCE_DECIMAL_PLACES_QUANTITY, BigDecimal.ROUND_HALF_UP);
 	}
 }
