@@ -1,0 +1,186 @@
+#API Document
+
+
+## BasePath: http://localhost:9999/
+
+## Api Version: 1.0.0
+
+## Resources
+### 0. /
+#### Overview
+
+
+#### 0. `/{userName}/wallet/balanceChange/`
+##### 0..0 addBalanceChange
+**POST** `/{userName}/wallet/balanceChange/`
+
+add balance to user
+More notes about this method
+
+###### URL
+    http://localhost:9999//{userName}/wallet/balanceChange/
+###### Parameters
+- body
+
+    <table border="1">
+        <tr>
+            <th>Parameter</th>
+            <th>Required</th>
+            <th>Description</th>
+            <th>Data Type</th>
+        </tr>
+        <tr>
+            <th>body</th>
+            <td>false</td>
+            <td></td>
+            <td><a href="#AddBalanceChangeRequest">AddBalanceChangeRequest</a></td>
+        </tr>
+    </table>
+- path
+
+    <table border="1">
+        <tr>
+            <th>Parameter</th>
+            <th>Required</th>
+            <th>Description</th>
+            <th>Data Type</th>
+        </tr>
+        <tr>
+            <th>userName</th>
+            <td>true</td>
+            <td></td>
+            <td>string</td>
+        </tr>
+    </table>
+
+###### Response
+[AddBalanceChangeResponse](#AddBalanceChangeResponse)
+
+
+###### Errors
+<table border="1">
+    <tr>
+        <th>Status Code</th>
+        <th>Reason</th>
+    </tr>
+        <tr>
+            <td>430</td>
+            <td>Database error</td>
+        </tr>
+        <tr>
+            <td>431</td>
+            <td>No user name specified</td>
+        </tr>
+        <tr>
+            <td>432</td>
+            <td>No amount specified</td>
+        </tr>
+        <tr>
+            <td>433</td>
+            <td>No transaction id specified</td>
+        </tr>
+</table>
+
+
+- - -
+
+## Data Types
+
+
+## <a name="AddBalanceChangeRequest">AddBalanceChangeRequest</a>
+
+<table border="1">
+    <tr>
+        <th>type</th>
+        <th>required</th>
+        <th>access</th>
+        <th>description</th>
+        <th>notes</th>
+    </tr>
+        <tr>
+            <td>long</td>
+            <td>required</td>
+            <td>-</td>
+            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
+            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
+        </tr>
+        <tr>
+            <td><a href="#BigDecimal">BigDecimal</a></td>
+            <td>optional</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+</table>
+
+
+
+## <a name="AddBalanceChangeResponse">AddBalanceChangeResponse</a>
+
+<table border="1">
+    <tr>
+        <th>type</th>
+        <th>required</th>
+        <th>access</th>
+        <th>description</th>
+        <th>notes</th>
+    </tr>
+        <tr>
+            <td>long</td>
+            <td>required</td>
+            <td>-</td>
+            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
+            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
+        </tr>
+        <tr>
+            <td><a href="#BigDecimal">BigDecimal</a></td>
+            <td>optional</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><a href="#BigDecimal">BigDecimal</a></td>
+            <td>optional</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>long</td>
+            <td>optional</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+</table>
+
+
+
+## <a name="BigDecimal">BigDecimal</a>
+
+<table border="1">
+    <tr>
+        <th>type</th>
+        <th>required</th>
+        <th>access</th>
+        <th>description</th>
+        <th>notes</th>
+    </tr>
+        <tr>
+            <td>int</td>
+            <td>optional</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>int</td>
+            <td>optional</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+</table>
+
+
