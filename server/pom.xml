@@ -289,7 +289,7 @@
 							<apiVersion>1.0.0</apiVersion>
 							<basePath>http://localhost:9999/</basePath>
 							<outputTemplate>
-								api-template
+								server/api-template
 							</outputTemplate>
 							<outputPath>generated/strapdown.html</outputPath>
 							<!--swaggerDirectory>generated/apidocs</swaggerDirectory -->
