@@ -1,186 +1,484 @@
-#API Document
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>API Document</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <!--<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href=" http://twitter.github.com/bootstrap/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"/>
+
+    <script>
+        $(function () {
+                        $("#tabs00").tabs();
+                        $("#tabs00").tabs();
+
+                $("#accordion0api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs00").tabs();
+
+                $("#accordion0api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+        });
+    </script>
+    <style type="text/css">
+        td, th {
+            padding: 2px 4px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        #notes {
+            position: absolute;
+            right: 10px;
+            top: 4px;
+            font-size: 9px;
+        }
+
+        #main_container {
+            position: relative;
+            width: 958px;
+        }
+    </style>
+</head>
+<body>
+<div id="main_container">
+    <h3>BasePath: http://localhost:9999/</h3>
+
+    <h3> Api Version: 1.0.0</h3>
+
+    <div id="api_container">
+        <h3>Resources</h3>
+            <h4>/</h4>
+
+            <div class='content'>
+                
 
 
-## BasePath: http://localhost:9999/
+                <div id="accordion0api">
+                            <h5><span style="font-weight: bold;">POST </span><span>/{userName}/wallet/balanceChange/</span>
 
-## Api Version: 1.0.0
+                                <div id="notes">add balance change to user's wallet</div>
+                            </h5>
+                            <div>
+                                <p>Method change current wallet of user by value provided by client</p>
 
-## Resources
-### 0. /
-#### Overview
+                                <div id="tabs00">
 
+                                    <ul>
+                                        <li><a href="#tabs00-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs00-2">Response Body</a></li>
+                                        <li><a href="#tabs00-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs00-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs00-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>body</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>body</th>
+                                                                <td>
+                                                                    optional</td>
+                                                                <td>AddBalanceChangeRequest</td>
+                                                                <td></td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>userName</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>string</td>
+                                                                <td>Name of player whose wallet is to be changed</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs00-2">
+                                        <p><a
+                                                href="#AddBalanceChangeResponse">AddBalanceChangeResponse</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs00-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>430</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>431</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>432</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>433</td>
+                                                    <td></td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs00-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/users/</span>
 
-#### 0. `/{userName}/wallet/balanceChange/`
-##### 0..0 addBalanceChange
-**POST** `/{userName}/wallet/balanceChange/`
+                                <div id="notes">returns list of all players with current wallet of each</div>
+                            </h5>
+                            <div>
+                                <p></p>
 
-add balance to user
-More notes about this method
+                                <div id="tabs00">
 
-###### URL
-    http://localhost:9999//{userName}/wallet/balanceChange/
-###### Parameters
-- body
+                                    <ul>
+                                        <li><a href="#tabs00-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs00-2">Response Body</a></li>
+                                        <li><a href="#tabs00-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs00-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs00-1">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs00-2">
+                                        <p><a
+                                                href="#Player">Player</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs00-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs00-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/</h4>
 
-    <table border="1">
-        <tr>
-            <th>Parameter</th>
-            <th>Required</th>
-            <th>Description</th>
-            <th>Data Type</th>
-        </tr>
-        <tr>
-            <th>body</th>
-            <td>false</td>
-            <td></td>
-            <td><a href="#AddBalanceChangeRequest">AddBalanceChangeRequest</a></td>
-        </tr>
-    </table>
-- path
-
-    <table border="1">
-        <tr>
-            <th>Parameter</th>
-            <th>Required</th>
-            <th>Description</th>
-            <th>Data Type</th>
-        </tr>
-        <tr>
-            <th>userName</th>
-            <td>true</td>
-            <td></td>
-            <td>string</td>
-        </tr>
-    </table>
-
-###### Response
-[AddBalanceChangeResponse](#AddBalanceChangeResponse)
-
-
-###### Errors
-<table border="1">
-    <tr>
-        <th>Status Code</th>
-        <th>Reason</th>
-    </tr>
-        <tr>
-            <td>430</td>
-            <td>Database error</td>
-        </tr>
-        <tr>
-            <td>431</td>
-            <td>No user name specified</td>
-        </tr>
-        <tr>
-            <td>432</td>
-            <td>No amount specified</td>
-        </tr>
-        <tr>
-            <td>433</td>
-            <td>No transaction id specified</td>
-        </tr>
-</table>
-
-
-- - -
-
-## Data Types
-
-
-## <a name="AddBalanceChangeRequest">AddBalanceChangeRequest</a>
-
-<table border="1">
-    <tr>
-        <th>type</th>
-        <th>required</th>
-        <th>access</th>
-        <th>description</th>
-        <th>notes</th>
-    </tr>
-        <tr>
-            <td>long</td>
-            <td>required</td>
-            <td>-</td>
-            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
-            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
-        </tr>
-        <tr>
-            <td><a href="#BigDecimal">BigDecimal</a></td>
-            <td>optional</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-</table>
-
-
-
-## <a name="AddBalanceChangeResponse">AddBalanceChangeResponse</a>
-
-<table border="1">
-    <tr>
-        <th>type</th>
-        <th>required</th>
-        <th>access</th>
-        <th>description</th>
-        <th>notes</th>
-    </tr>
-        <tr>
-            <td>long</td>
-            <td>required</td>
-            <td>-</td>
-            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
-            <td>Transaction Id. Ensure that one transaction won't be processed more than one time</td>
-        </tr>
-        <tr>
-            <td><a href="#BigDecimal">BigDecimal</a></td>
-            <td>optional</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td><a href="#BigDecimal">BigDecimal</a></td>
-            <td>optional</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>long</td>
-            <td>optional</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-</table>
+            <div class='content'>
+                
 
 
+                <div id="accordion0api">
+                            <h5><span style="font-weight: bold;">GET </span><span>/statistics/</span>
 
-## <a name="BigDecimal">BigDecimal</a>
+                                <div id="notes">return list of all current statistics</div>
+                            </h5>
+                            <div>
+                                <p>Method for getting all statistics about query execution (every statistic describes one minute), sorted with id (the greater id the later minute description)</p>
 
-<table border="1">
-    <tr>
-        <th>type</th>
-        <th>required</th>
-        <th>access</th>
-        <th>description</th>
-        <th>notes</th>
-    </tr>
-        <tr>
-            <td>int</td>
-            <td>optional</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>int</td>
-            <td>optional</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-</table>
+                                <div id="tabs00">
 
+                                    <ul>
+                                        <li><a href="#tabs00-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs00-2">Response Body</a></li>
+                                        <li><a href="#tabs00-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs00-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs00-1">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs00-2">
+                                        <p><a
+                                                href="#ProcessedQueriesStatistics">ProcessedQueriesStatistics</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs00-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs00-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+    </div>
+    <h3>Data Types</h3>
+        <h4><a name="AddBalanceChangeRequest">AddBalanceChangeRequest</a></h4>
 
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>transactionId</th>
+                        <td>long</td>
+                        <td>true</td>
+                        <td></td>
+                        <td>Id of transaction</td>
+                        <td>Id of transaction</td>
+                    </tr>
+                    <tr>
+                        <th>amount</th>
+                        <td><a href="#BigDecimal">BigDecimal</a></td>
+                        <td>true</td>
+                        <td></td>
+                        <td>Amount by which wallet is to be changed</td>
+                        <td>Amount by which wallet is to be changed</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="AddBalanceChangeResponse">AddBalanceChangeResponse</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>transactionId</th>
+                        <td>long</td>
+                        <td>true</td>
+                        <td></td>
+                        <td>Id of transaction</td>
+                        <td>Id of transaction</td>
+                    </tr>
+                    <tr>
+                        <th>balanceChange</th>
+                        <td><a href="#BigDecimal">BigDecimal</a></td>
+                        <td>true</td>
+                        <td></td>
+                        <td>Value of wallet change</td>
+                        <td>Value of wallet change</td>
+                    </tr>
+                    <tr>
+                        <th>balanceAfterChange</th>
+                        <td><a href="#BigDecimal">BigDecimal</a></td>
+                        <td>true</td>
+                        <td></td>
+                        <td>User wallet value after change</td>
+                        <td>User wallet value after change</td>
+                    </tr>
+                    <tr>
+                        <th>balanceVersion</th>
+                        <td>long</td>
+                        <td>true</td>
+                        <td></td>
+                        <td>Version of wallet, incremented after every change</td>
+                        <td>Version of wallet, incremented after every change</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="BigDecimal">BigDecimal</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>scale</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>precision</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="Player">Player</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>updateTimestamp</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>userName</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>balance</th>
+                        <td><a href="#BigDecimal">BigDecimal</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>version</th>
+                        <td>long</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="ProcessedQueriesStatistics">ProcessedQueriesStatistics</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>updateTimestamp</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>averageProcessingTime</th>
+                        <td><a href="#BigDecimal">BigDecimal</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>maxProcessingTime</th>
+                        <td>long</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>minProcessingTime</th>
+                        <td>long</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>version</th>
+                        <td>long</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>processedQueriesQuantity</th>
+                        <td>long</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>id</th>
+                        <td>long</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+</div>
+</body>
+</html>
